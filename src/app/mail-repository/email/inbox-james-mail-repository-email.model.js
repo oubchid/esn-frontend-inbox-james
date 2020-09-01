@@ -1,9 +1,11 @@
 'use strict';
 
+const _ = require('lodash');
+
 angular.module('esn.inbox-james')
   .factory('InboxJamesMailRepositoryEmail', InboxJamesMailRepositoryEmailFactory);
 
-function InboxJamesMailRepositoryEmailFactory(_) {
+function InboxJamesMailRepositoryEmailFactory() {
   function InboxJamesMailRepositoryEmail(email) {
     _.assign(this, _.pick(email, ['name', 'sender', 'recipients', 'headers', 'lastUpdated', 'htmlBody', 'textBody', 'attributes', 'repository']));
 

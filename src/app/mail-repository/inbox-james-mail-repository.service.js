@@ -1,10 +1,11 @@
 'use strict';
 
+const _ = require('lodash');
+
 angular.module('esn.inbox-james')
   .factory('inboxJamesMailRepository', inboxJamesMailRepository);
 
 function inboxJamesMailRepository(
-  _,
   $q,
   $modal,
   $rootScope,

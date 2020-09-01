@@ -1,9 +1,11 @@
 'use strict';
 
+const _ = require('lodash');
+
 angular.module('esn.inbox-james')
   .factory('inboxJamesMailRepositoryEmailSelection', inboxJamesMailRepositoryEmailSelection);
 
-function inboxJamesMailRepositoryEmailSelection(_) {
+function inboxJamesMailRepositoryEmailSelection() {
   var selectedEmails = [];
   var selecting;
 
