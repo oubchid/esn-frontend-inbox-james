@@ -1,0 +1,16 @@
+.card
+  .email-content
+    inbox-james-mail-repository-email-selection(email='$ctrl.email')
+    .email-header(
+      esn-modal-launcher='/unifiedinbox.james/app/mail-repository/email/inbox-james-mail-repository-email-dialog.html'
+    )
+      .email-subject
+        span {{ ::$ctrl.email.headers.Subject[0] }}
+      .email-sender
+        inbox-emailer(emailer="::$ctrl.email.sender")
+    .email-date-and-actions
+      .email-sent-date
+        span {{ ::$ctrl.email.date | inboxItemDate }}
+      .email-actions
+        a.clickable(ng-click='$ctrl.download()', title=__('Download (.eml)'))
+          i.mdi.mdi-download

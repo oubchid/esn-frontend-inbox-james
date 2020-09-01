@@ -1,0 +1,14 @@
+ng-form(name="form")
+  .form-group
+    label.fg-label #{__('Messages whose subjects')}
+    md-input-container
+      md-select(ng-model="$ctrl.criterion.operator", md-container-class="criterion-type-selector-dropdown", required)
+        md-option(ng-value="'contains'") #{__('contain exactly')}
+        md-option(ng-value="'containsIgnoreCase'") #{__('contain')}
+        md-option(ng-value="'equals'") #{__('match exactly')}
+        md-option(ng-value="'equalsIgnoreCase'") #{__('match')}
+
+  .form-group
+    label.fg-label #{__('the words')}
+    .fg-line
+      input.input.form-control(type='text', ng-model="$ctrl.criterion.value", autoclose="1", required)

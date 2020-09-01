@@ -1,0 +1,27 @@
+.flex.flex-grow
+  .flex-row
+    .select-all-checkbox(ng-click='$ctrl.selectAllMails()')
+      label.checkbox
+        input(
+          type='checkbox',
+          ng-model='$ctrl.selectedAllEmails'
+        )
+        i.input-helper
+    md-menu(md-position-mode='left target')
+      .select-menu-caret(ng-click='$mdMenu.open($event)')
+        i.mdi.mdi-menu-down
+      md-menu-content
+        md-menu-item
+          md-button(ng-click='$ctrl.selectAllMails(true)')
+            | #{__('Select all mails')}
+        md-menu-item
+          md-button(ng-click='$ctrl.selectRepository()')
+            | #{__('Select all mails in repository')}
+  .selected-helper(ng-if="$ctrl.isSelecting()")
+    span(ng-show="!$ctrl.repositorySelected") #{__('%s selected', '{{ $ctrl.getNumberOfSelectedEmails() }}')}
+    span(ng-show="$ctrl.repositorySelected") #{__('All mails in the current repository are selected.')}
+
+.flex-grow.flex-vertical-centered.flex-end
+  .flex-vertical-centered(dynamic-directive="mail-repository-extra-actions")
+  button.btn-link.btn-icon(title=__('Delete'), ng-click='$ctrl.onDeleteBtnClick()', ng-show='$ctrl.isSelecting()')
+    i.mdi.mdi-delete

@@ -1,0 +1,20 @@
+.lv-body(ng-if='$ctrl.shouldDisplay')
+  .lv-item.menu-item(esn-toggle, toggled="true")
+    .badge-container
+      .caret-submenu
+        i.mdi.mdi-menu-down
+    .menu-title #{__('Matched rule')}
+
+  ul
+    .rule-details(ng-if='!$ctrl.ruleNotFound')
+      .flex-row
+        span.detail-title #{__('Rule description:')}
+        span {{::$ctrl.rule.explanation}}
+      .flex-row
+        span.detail-title #{__('Source:')}
+        span {{::$ctrl.rule.source}}
+      .flex-row
+        span.detail-title #{__('Matched string:')}
+        span {{::$ctrl.rule.expression}}
+    .error-message(ng-if='$ctrl.ruleNotFound')
+      span #{__('Unable to get the rule. The matched rule of this mail might have been dropped earlier.')}

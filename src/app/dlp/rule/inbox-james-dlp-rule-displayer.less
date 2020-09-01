@@ -1,0 +1,45 @@
+inbox-james-dlp-rule-displayer {
+  .lv-body {
+    background-color: darken(@body-bg, 2%);
+
+    &.toggled {
+      i.mdi-menu-down {
+        .rotateZ3d(-90deg);
+      }
+    }
+
+    .lv-item {
+      .clickable;
+      .flex-row;
+      .flex-vertical-centered;
+
+      padding: 5px 5px 5px 0px;
+
+      .menu-title {
+        .flex-vertical-centered;
+
+        color: @secondaryTextColor;
+        font-weight: 500;
+      }
+    }
+
+    i.mdi.mdi-menu-down {
+      font-size: 1.4em;
+    }
+  }
+
+  ul {
+    padding-left: 5px;
+    padding-bottom: 5px;
+
+    .rule-details {
+      .flex-column;
+
+      .detail-title {
+        .bold;
+
+        padding-right: 3px;
+      }
+    }
+  }
+}

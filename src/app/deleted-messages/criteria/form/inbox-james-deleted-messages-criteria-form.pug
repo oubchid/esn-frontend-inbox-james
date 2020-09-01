@@ -1,0 +1,14 @@
+ng-form(name="form")
+  inbox-james-deleted-messages-criteria-item(
+    ng-repeat='criterion in $ctrl.criteria track by $index',
+    criterion='criterion',
+    delete-criterion="$ctrl.deleteCriterion($index)",
+    ng-if="!$ctrl.selectAll"
+  )
+
+  .no-criteria-message(ng-if="!$ctrl.criteria.length")
+    .message
+      .no-criteria-icon.mdi.mdi-format-list-bulleted
+      .message !{__('No criterion, click %s to add a new one', '<span class="mdi mdi-plus"></span>')}
+
+fab(icon="plus", ng-if="!$ctrl.selectAll", ng-click="$ctrl.addCriterion()")

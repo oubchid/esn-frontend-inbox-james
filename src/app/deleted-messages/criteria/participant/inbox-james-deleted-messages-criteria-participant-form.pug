@@ -1,0 +1,11 @@
+ng-form(name="form")
+  .form-group
+    label.fg-label(ng-if="$ctrl.participantType === 'recipients'") #{__('Messages whose recipients contain')}
+    label.fg-label(ng-if="$ctrl.participantType === 'sender'") #{__('Messages whose sender is')}
+    recipients-auto-complete(
+      ng-model="$ctrl.paritipants",
+      ng-class="{'no-more-emails': $ctrl.paritipants.length}",
+      template="recipients-auto-complete",
+      on-email-added="$ctrl.onTagAdded",
+      on-email-removed="$ctrl.onTagRemoved"
+    )

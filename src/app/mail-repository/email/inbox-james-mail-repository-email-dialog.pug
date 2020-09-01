@@ -1,0 +1,27 @@
+.inbox-james-mail-repository-email-dialog.modal.full-screen.email-view
+  .modal-dialog
+    .modal-content
+      .modal-header
+        button.close(type='button', data-dismiss='modal', aria-label='Close', ng-click='$hide()')
+          span(aria-hidden='true') &times;
+        h4.modal-title.ellipsis(title='{{::$ctrl.email.headers.Subject[0]}}') {{::$ctrl.email.headers.Subject[0]}}
+      .modal-body
+        .email-header
+          .sender-avatar.hidden-xs
+            esn-avatar(user-email='::$ctrl.email.sender.email')
+          .avatarify
+            inbox-emailer-display(email='::$ctrl.email')
+        .all-centered
+          .flex-vertical-centered(dynamic-directive="email-extra-actions")
+        .extra-info(dynamic-directive='mail-repository-mail-extra-info')
+        .email-body
+          inbox-message-body(message='::$ctrl.email')
+      .modal-footer
+        .group-left
+          button.btn.btn-default.delete-button(ng-click='$ctrl.delete(); $hide()')
+            i.mdi.mdi-delete
+
+        .group-right
+          button.btn.btn-default(ng-click='$hide()') #{__('Close')}
+          button.btn.btn-default(ng-click="$ctrl.download()")
+            | #{__('Download (.eml)')}

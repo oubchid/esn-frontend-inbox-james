@@ -1,0 +1,17 @@
+.fadeIn200ms
+  inbox-james-mail-repository-header(ng-if="$ctrl.elements.length > 0", emails='$ctrl.elements', repository="{{::$ctrl.repository}}")
+  infinite-list.inbox-infinite-list(load-more-elements='$ctrl.loadMoreElements()', scroll-inside-container='$ctrl.scrollInsideContainer')
+    .listview.lv-bordered.lv-lg(ng-if='$ctrl.elements.length > 0')
+      .lv-body
+        inbox-james-mail-repository-email-display(
+          email='email',
+          download='$ctrl.downloadMail(email)',
+          delete='$ctrl.deleteMail(email)',
+          ng-repeat='email in $ctrl.elements'
+        )
+  div(ng-if='$ctrl.infiniteScrollDisabled')
+    .text-center(openpaas-logo-spinner, spinner-start-active='1', spinner-size='0.5')
+  .empty-message(ng-if='!$ctrl.elements.length && $ctrl.infiniteScrollCompleted')
+    .message
+      i.mdi.mdi-email-outline
+      p #{__('No email')}

@@ -1,0 +1,5 @@
+ng-form(name="form", ng-init="$ctrl.criterion.operator='equals'")
+  label.checkbox.checkbox-inline
+    input(type="checkbox", ng-model="$ctrl.criterion.value")
+    i.input-helper
+    | {{ 'Has attachment' | translate }}

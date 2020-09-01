@@ -1,0 +1,20 @@
+ng-form(name="form")
+  .form-group
+    label.fg-label(ng-if="$ctrl.criterion.fieldName === 'deliveryDate'") #{__("Messages whose delivery date")}
+    label.fg-label(ng-if="$ctrl.criterion.fieldName === 'deletionDate'") #{__("Messages whose deletion date")}
+    md-input-container
+      md-select(ng-model="$ctrl.criterion.operator", md-container-class="criterion-type-selector-dropdown", required)
+        md-option(ng-value="'beforeOrEquals'") #{__('is before or on')}
+        md-option(ng-value="'afterOrEquals'") #{__('is after or on')}
+
+  .form-group
+    label.fg-label #{__('the date')}
+    .fg-line
+      input.form-control.criterion-value(
+        type="text",
+        ng-model="$ctrl.criterion.value",
+        date-format="{{::$ctrl.dateFormat}}",
+        data-autoclose="1",
+        bs-datepicker,
+        required
+      )

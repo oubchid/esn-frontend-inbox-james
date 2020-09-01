@@ -1,0 +1,65 @@
+inbox-james-mail-repository-email-display {
+  .card {
+    margin-bottom: 1px;
+  }
+
+  .email-content {
+    .flex-space-between;
+    .flex-vertical-centered;
+
+    padding: 4px 7px;
+
+    .email-header {
+      .flex-grow;
+      .clickable;
+
+      margin-left: 10px;
+
+      .email-subject {
+        span {
+          font-weight: 400;
+        }
+      }
+    }
+
+    .email-date-and-actions {
+      .flex-column;
+
+      .email-actions {
+        .flex-end;
+
+        i {
+          color: @m-gray;
+          font-size: 18px;
+        }
+      }
+    }
+  }
+
+  @media (min-width: @screen-xl-min) {
+    .email-content {
+      .email-header {
+        .flex-row-reverse;
+        .flex-end;
+
+        .email-sender {
+          width: 200px;
+
+          .email {
+            display: none;
+          }
+        }
+      }
+
+      .email-date-and-actions {
+        .flex-row-reverse;
+
+        .email-sent-date {
+          .flex-end;
+
+          width: 100px;
+        }
+      }
+    }
+  }
+}

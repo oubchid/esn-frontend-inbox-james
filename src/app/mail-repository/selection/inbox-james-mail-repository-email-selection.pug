@@ -1,0 +1,11 @@
+div(desktop-hover='hovering = hover', ng-click='$ctrl.select()')
+  esn-avatar(
+    ng-hide="hovering || $ctrl.email.selected",
+    user-id="::$ctrl.email.sender._id"
+  )
+  label.checkbox.clickable(
+    ng-show="hovering || $ctrl.email.selected",
+    ng-click="$event.preventDefault()"
+  )
+    input(type='checkbox', ng-checked='$ctrl.email.selected')
+    i.input-helper

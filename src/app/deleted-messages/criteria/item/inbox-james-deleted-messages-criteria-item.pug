@@ -1,0 +1,36 @@
+.card
+  .criterion-header.clickable.flex-space-between(esn-toggle)
+    .left-container.flex-vertical-centered
+      i.mdi.mdi-menu-down
+      .criterion-summary(ng-bind-html="$ctrl.getCriterionSummary()")
+    .right-container.flex-vertical-centered.esn-flex-noshrink
+      button.btn.btn-link.btn-icon(ng-click="$ctrl.deleteCriterion()")
+        i.mdi.mdi-delete
+  ul.p-10
+    .criteria-type-selector
+      .title.flex-grow #{__('Criterion type:')}
+      md-input-container.flex-grow
+        md-select(
+          ng-model="$ctrl.criterion.fieldName",
+          ng-change="$ctrl.resetCriterion()",
+          md-container-class="criterion-type-selector-dropdown",
+          required
+        )
+          md-option(ng-value="type.value" ng-repeat="type in $ctrl.types")
+            | {{::type.label | esnI18n}}
+    
+    hr
+
+    .criteria-form(ng-switch="$ctrl.criterion.fieldName")
+      div(ng-switch-when='subject')
+        inbox-james-deleted-messages-criteria-subject-form(criterion="$ctrl.criterion")
+      div(ng-switch-when='hasAttachment')
+        inbox-james-deleted-messages-criteria-attachment-form(criterion="$ctrl.criterion")
+      div(ng-switch-when='recipients')
+        inbox-james-deleted-messages-criteria-participant-form(criterion="$ctrl.criterion", participant-type="'recipients'")
+      div(ng-switch-when='sender')
+        inbox-james-deleted-messages-criteria-participant-form(criterion="$ctrl.criterion", participant-type="'sender'")
+      div(ng-switch-when='deliveryDate')
+        inbox-james-deleted-messages-criteria-date-form(criterion="$ctrl.criterion")
+      div(ng-switch-when='deletionDate')
+        inbox-james-deleted-messages-criteria-date-form(criterion="$ctrl.criterion")

@@ -1,0 +1,10 @@
+sub-header
+  inbox-james-deleted-messages-restore-request-subheader(on-request-submit="$ctrl.onSendButtonClick()", form="form", criteria="$ctrl.criteria")
+
+.inbox-james-restore-deleted-messages-request.card
+  p #{__('Emails deleted from the trash can be restored by filing a request to domain administrators. In here, you can create several criteria that will help system find the matching emails. This request will then be reviewed by domain administrators. After the request is approved and processed, you can find the restored emails in a special mailbox.')}
+
+  hr
+
+  form(name="form")
+    inbox-james-deleted-messages-criteria-form(criteria="$ctrl.criteria")

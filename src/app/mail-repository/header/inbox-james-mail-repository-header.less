@@ -1,0 +1,51 @@
+inbox-james-mail-repository-header {
+  .flex;
+  .flex-vertical-centered;
+
+  height: 42px;
+  padding: 4px 7px;
+  background-color: @darkenBgColor;
+
+  .select-all-checkbox {
+    .all-centered;
+
+    width: 40px;
+    height: 40px;
+
+    .checkbox {
+      .clickable;
+
+      width: 17px;
+      height: 17px;
+    }
+  }
+
+  .selected-helper {
+    .flex-vertical-centered;
+
+    margin-left: 10px;
+    font-weight: 500;
+  }
+
+  .select-menu-caret {
+    .clickable;
+    .all-centered;
+
+    margin-left: 5px;
+    height: 100%;
+  }
+
+  i.mdi {
+    color: @secondaryTextColor;
+    font-size: 18px;
+  }
+}
+
+@media (min-width: @screen-xl-min) {
+  inbox-james-mail-repository-header {
+    .select-all-checkbox {
+      width: 28px;
+      height: 28px;
+    }
+  }
+}

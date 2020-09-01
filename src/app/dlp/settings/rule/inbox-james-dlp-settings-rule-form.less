@@ -1,0 +1,38 @@
+inbox-james-dlp-settings-rule-form {
+  .card {
+    .card-header {
+      background: @darkenBgColor;
+      padding: 10px;
+      margin-bottom: 10px;
+
+      .mdi {
+        font-size: 2em;
+      }
+    }
+
+    .card-body {
+      padding-top: 20px;
+
+      ng-form {
+        display: block;
+        padding-top: 20px;
+
+        .match-message {
+          color: @m-green;
+
+          &:not(.match) {
+            color: @m-red;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: @screen-md-min) {
+  inbox-james-dlp-settings-rule-form {
+    .test-expression-btn {
+      margin-bottom: 30px;
+    }
+  }
+}
