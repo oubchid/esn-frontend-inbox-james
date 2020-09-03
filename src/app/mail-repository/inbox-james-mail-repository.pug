@@ -14,4 +14,4 @@
   .empty-message(ng-if='!$ctrl.elements.length && $ctrl.infiniteScrollCompleted')
     .message
       i.mdi.mdi-email-outline
-      p #{__('No email')}
+      p {{ 'No email' | translate }}

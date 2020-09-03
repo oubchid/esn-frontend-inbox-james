@@ -13,15 +13,15 @@
       md-menu-content
         md-menu-item
           md-button(ng-click='$ctrl.selectAllMails(true)')
-            | #{__('Select all mails')}
+            | {{ 'Select all mails' | translate }}
         md-menu-item
           md-button(ng-click='$ctrl.selectRepository()')
-            | #{__('Select all mails in repository')}
+            | {{ 'Select all mails in repository' | translate }}
   .selected-helper(ng-if="$ctrl.isSelecting()")
-    span(ng-show="!$ctrl.repositorySelected") #{__('%s selected', '{{ $ctrl.getNumberOfSelectedEmails() }}')}
-    span(ng-show="$ctrl.repositorySelected") #{__('All mails in the current repository are selected.')}
+    span(ng-show="!$ctrl.repositorySelected") {{ '%s selected' | translate:$ctrl }}
+    span(ng-show="$ctrl.repositorySelected") {{ 'All mails in the current repository are selected.' | translate }}
 
 .flex-grow.flex-vertical-centered.flex-end
   .flex-vertical-centered(dynamic-directive="mail-repository-extra-actions")
-  button.btn-link.btn-icon(title=__('Delete'), ng-click='$ctrl.onDeleteBtnClick()', ng-show='$ctrl.isSelecting()')
+  button.btn-link.btn-icon(title="{{ 'Delete' | translate }}", ng-click='$ctrl.onDeleteBtnClick()', ng-show='$ctrl.isSelecting()')
     i.mdi.mdi-delete

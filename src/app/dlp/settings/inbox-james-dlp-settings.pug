@@ -12,9 +12,9 @@ form(name="form")
           .message
             .icon.mdi.mdi-check
             div
-              | #{__('No rules, click')}
+              | {{ 'No rules, click' | translate }}
               span.mdi.mdi-plus
-              | #{__('to add a new one!')}
+              | {{ 'to add a new one!' | translate }}
         inbox-james-dlp-settings-rule-form(
           ng-repeat="rule in $ctrl.rules track by rule.id",
           rule="rule"
@@ -28,4 +28,4 @@ form(name="form")
       .container-message
         .message
           .icon.mdi.mdi-alert-circle
-          p #{__('A problem occurred while getting rules, try refreshing this page!')}
+          p {{ 'A problem occurred while getting rules, try refreshing this page!' | translate }}

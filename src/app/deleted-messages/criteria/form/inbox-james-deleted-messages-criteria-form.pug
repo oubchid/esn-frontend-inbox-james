@@ -9,6 +9,6 @@ ng-form(name="form")
   .no-criteria-message(ng-if="!$ctrl.criteria.length")
     .message
       .no-criteria-icon.mdi.mdi-format-list-bulleted
-      .message !{__('No criterion, click %s to add a new one', '<span class="mdi mdi-plus"></span>')}
+      .message {{ 'No criterion, click + to add a new one' | translate }}
 
 fab(icon="plus", ng-if="!$ctrl.selectAll", ng-click="$ctrl.addCriterion()")

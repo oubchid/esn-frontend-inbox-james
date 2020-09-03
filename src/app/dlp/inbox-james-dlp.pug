@@ -2,7 +2,7 @@
   .lv-body
     .lv-item.clickable.menu-item.flex(esn-toggle, toggled="true")
       i.mdi.mdi-format-list-checks
-      .menu-title #{__('Quarantine')}
+      .menu-title {{ 'Quarantine' | translate }}
       .flex-grow
         .badge-container.flex-end
           .caret-submenu
@@ -10,10 +10,10 @@
     ul
       .lv-item.clickable.menu-sub-item(ui-sref="admin.domain.dlp.quarantine", ui-sref-active="selected")
         i.mdi.mdi-email
-        .menu-title #{__('Quarantined')}
+        .menu-title {{ 'Quarantined' | translate }}
       .lv-item.clickable.menu-sub-item(ui-sref="admin.domain.dlp.rejected", ui-sref-active="selected")
         i.mdi.mdi-close-circle
-        .menu-title #{__('Rejected')}
+        .menu-title {{ 'Rejected' | translate }}
       .lv-item.clickable.menu-sub-item(ui-sref="admin.domain.dlp.settings", ui-sref-active="selected")
         i.mdi.mdi-settings
-        .menu-title #{__('Settings')}
+        .menu-title {{ 'Settings' | translate }}

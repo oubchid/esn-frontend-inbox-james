@@ -28,6 +28,7 @@ require('esn-frontend-inbox/src/linagora.esn.james/app/app.module.js');
 
 require('./app.routes');
 require('./app.run');
+require('./app.config');
 require('./common/inbox-james-restangular.service.js');
 require('./dlp/inbox-james-dlp.constants.js');
 require('./dlp/inbox-james-dlp.component.js');

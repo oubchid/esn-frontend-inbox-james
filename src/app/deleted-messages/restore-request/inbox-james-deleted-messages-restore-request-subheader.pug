@@ -2,12 +2,12 @@ extends /modules/subheader/responsive-subheader.pug
 
 block left
   inbox-subheader-close-button.hidden-md
-  .title #{__('Request to restore deleted emails')}
+  .title {{ 'Request to restore deleted emails' | translate }}
 
 block right
   button.btn.btn-link.save.hidden-xs(ng-click="$ctrl.onRequestSubmit()", ng-disabled="$ctrl.form.$invalid || !$ctrl.criteria.length")
     .flex-vertical-centered
-      span #{__('Send')}
+      span {{ 'Send' | translate }}
 
   button.btn.btn-link.btn-icon.save.visible-xs(ng-click="$ctrl.onRequestSubmit()", ng-disabled="$ctrl.form.$invalid || !$ctrl.criteria.length")
     i.mdi.mdi-send

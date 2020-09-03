@@ -3,18 +3,18 @@
     .badge-container
       .caret-submenu
         i.mdi.mdi-menu-down
-    .menu-title #{__('Matched rule')}
+    .menu-title {{ 'Matched rule' | translate }}
 
   ul
     .rule-details(ng-if='!$ctrl.ruleNotFound')
       .flex-row
-        span.detail-title #{__('Rule description:')}
+        span.detail-title {{ 'Rule description:' | translate }}
         span {{::$ctrl.rule.explanation}}
       .flex-row
-        span.detail-title #{__('Source:')}
+        span.detail-title {{ 'Source:' | translate }}
         span {{::$ctrl.rule.source}}
       .flex-row
-        span.detail-title #{__('Matched string:')}
+        span.detail-title {{ 'Matched string:' | translate }}
         span {{::$ctrl.rule.expression}}
     .error-message(ng-if='$ctrl.ruleNotFound')
-      span #{__('Unable to get the rule. The matched rule of this mail might have been dropped earlier.')}
+      span {{ 'Unable to get the rule. The matched rule of this mail might have been dropped earlier.' | translate }}

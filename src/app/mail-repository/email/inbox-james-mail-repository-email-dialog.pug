@@ -22,6 +22,6 @@
             i.mdi.mdi-delete
 
         .group-right
-          button.btn.btn-default(ng-click='$hide()') #{__('Close')}
+          button.btn.btn-default(ng-click='$hide()') {{ 'Close' | translate }}
           button.btn.btn-default(ng-click="$ctrl.download()")
-            | #{__('Download (.eml)')}
+            | {{ 'Download (.eml)' | translate }}

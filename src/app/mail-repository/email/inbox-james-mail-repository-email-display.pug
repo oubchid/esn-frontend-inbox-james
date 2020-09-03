@@ -12,5 +12,5 @@
       .email-sent-date
         span {{ ::$ctrl.email.date | inboxItemDate }}
       .email-actions
-        a.clickable(ng-click='$ctrl.download()', title=__('Download (.eml)'))
+        a.clickable(ng-click='$ctrl.download()', title="{{ 'Download (.eml)' | translate }}")
           i.mdi.mdi-download
