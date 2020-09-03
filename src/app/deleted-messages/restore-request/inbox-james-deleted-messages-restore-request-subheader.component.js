@@ -2,7 +2,7 @@
 
 angular.module('esn.inbox-james')
   .component('inboxJamesDeletedMessagesRestoreRequestSubheader', {
-    templateUrl: '/unifiedinbox.james/app/deleted-messages/restore-request/inbox-james-deleted-messages-restore-request-subheader.html',
+    template: require('./inbox-james-deleted-messages-restore-request-subheader.pug'),
     bindings: {
       onRequestSubmit: '&',
       form: '<',

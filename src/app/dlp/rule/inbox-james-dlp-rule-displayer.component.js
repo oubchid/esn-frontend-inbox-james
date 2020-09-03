@@ -3,7 +3,7 @@
 angular.module('esn.inbox-james')
 
 .component('inboxJamesDlpRuleDisplayer', {
-  templateUrl: '/unifiedinbox.james/app/dlp/rule/inbox-james-dlp-rule-displayer.html',
+  template: require('./inbox-james-dlp-rule-displayer.pug'),
   controller: 'inboxJamesDlpRuleDisplayerController',
   bindings: {
     email: '<'

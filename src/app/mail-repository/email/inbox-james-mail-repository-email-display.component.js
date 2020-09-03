@@ -2,7 +2,7 @@
 
 angular.module('esn.inbox-james')
   .component('inboxJamesMailRepositoryEmailDisplay', {
-    templateUrl: '/unifiedinbox.james/app/mail-repository/email/inbox-james-mail-repository-email-display.html',
+    template: require('./inbox-james-mail-repository-email-display.pug'),
     bindings: {
       email: '<',
       download: '&',

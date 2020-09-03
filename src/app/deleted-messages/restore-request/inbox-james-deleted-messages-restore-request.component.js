@@ -2,7 +2,7 @@
 
 angular.module('esn.inbox-james')
   .component('inboxJamesDeletedMessagesRestoreRequest', {
-    templateUrl: '/unifiedinbox.james/app/deleted-messages/restore-request/inbox-james-deleted-messages-restore-request.html',
+    template: require('./inbox-james-deleted-messages-restore-request.pug'),
     controller: 'InboxJamesDeletedMessagesRestoreRequestController'
   });
 

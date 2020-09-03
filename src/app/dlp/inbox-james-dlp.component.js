@@ -2,7 +2,7 @@
 
 angular.module('esn.inbox-james')
   .component('inboxJamesDlp', {
-    templateUrl: '/unifiedinbox.james/app/dlp/inbox-james-dlp.html',
+    template: require('./inbox-james-dlp.pug'),
     bindings: {
       displayIn: '<'
     }

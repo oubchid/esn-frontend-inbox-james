@@ -2,7 +2,7 @@
 
 angular.module('esn.inbox-james')
   .component('inboxJamesDlpQuarantineActions', {
-    templateUrl: '/unifiedinbox.james/app/dlp/quarantine/actions/inbox-james-dlp-quarantine-actions.html',
+    template: require('./inbox-james-dlp-quarantine-actions.pug'),
     controller: 'inboxJamesDlpQuarantineActionsController',
     bindings: {
       bulkAction: '<',

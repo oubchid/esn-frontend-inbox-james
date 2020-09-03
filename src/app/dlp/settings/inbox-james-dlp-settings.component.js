@@ -3,6 +3,6 @@
 angular.module('esn.inbox-james')
 
 .component('inboxJamesDlpSettings', {
-  templateUrl: '/unifiedinbox.james/app/dlp/settings/inbox-james-dlp-settings.html',
+  template: require('./inbox-james-dlp-settings.pug'),
   controller: 'inboxJamesDlpSettingsController'
 });

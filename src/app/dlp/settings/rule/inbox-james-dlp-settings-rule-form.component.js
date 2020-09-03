@@ -3,7 +3,7 @@
 angular.module('esn.inbox-james')
 
 .component('inboxJamesDlpSettingsRuleForm', {
-  templateUrl: '/unifiedinbox.james/app/dlp/settings/rule/inbox-james-dlp-settings-rule-form.html',
+  template: require('./inbox-james-dlp-settings-rule-form.pug'),
   controller: 'InboxJamesDlpSettingsRuleFormController',
   bindings: {
     rule: '='

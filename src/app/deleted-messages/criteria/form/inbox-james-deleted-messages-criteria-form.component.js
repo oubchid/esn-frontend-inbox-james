@@ -2,7 +2,7 @@
 
 angular.module('esn.inbox-james')
   .component('inboxJamesDeletedMessagesCriteriaForm', {
-    templateUrl: '/unifiedinbox.james/app/deleted-messages/criteria/form/inbox-james-deleted-messages-criteria-form.html',
+    template: require('./inbox-james-deleted-messages-criteria-form.pug'),
     controller: 'InboxJamesDeletedMessagesCriteriaFormController',
     bindings: {
       criteria: '='

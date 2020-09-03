@@ -2,6 +2,6 @@
 
 angular.module('esn.inbox-james')
   .component('inboxJamesDlpQuarantine', {
-    templateUrl: '/unifiedinbox.james/app/dlp/quarantine/inbox-james-dlp-quarantine.html',
+    template: require('./inbox-james-dlp-quarantine.pug'),
     controller: 'inboxJamesDlpQuarantineController'
   });

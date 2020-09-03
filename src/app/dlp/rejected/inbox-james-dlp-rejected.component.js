@@ -2,6 +2,6 @@
 
 angular.module('esn.inbox-james')
   .component('inboxJamesDlpRejected', {
-    templateUrl: '/unifiedinbox.james/app/dlp/rejected/inbox-james-dlp-rejected.html',
+    template: require('./inbox-james-dlp-rejected.pug'),
     controller: 'inboxJamesDlpRejectedController'
   });

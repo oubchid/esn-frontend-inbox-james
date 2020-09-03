@@ -2,7 +2,7 @@
 
 angular.module('esn.inbox-james')
   .component('inboxJamesMailRepository', {
-    templateUrl: '/unifiedinbox.james/app/mail-repository/inbox-james-mail-repository.html',
+    template: require('./inbox-james-mail-repository.pug'),
     controller: 'inboxJamesMailRepositoryController',
     bindings: {
       repository: '<'

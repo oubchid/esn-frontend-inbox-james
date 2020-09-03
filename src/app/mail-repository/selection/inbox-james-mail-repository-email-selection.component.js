@@ -2,7 +2,7 @@
 
 angular.module('esn.inbox-james')
   .component('inboxJamesMailRepositoryEmailSelection', {
-    templateUrl: '/unifiedinbox.james/app/mail-repository/selection/inbox-james-mail-repository-email-selection.html',
+    template: require('./inbox-james-mail-repository-email-selection.pug'),
     controller: 'inboxJamesMailRepositoryEmailSelectionController',
     bindings: {
       email: '<'

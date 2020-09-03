@@ -2,7 +2,7 @@
 
 angular.module('esn.inbox-james')
   .component('inboxJamesDlpRejectedActions', {
-    templateUrl: '/unifiedinbox.james/app/dlp/rejected/actions/inbox-james-dlp-rejected-actions.html',
+    template: require('./inbox-james-dlp-rejected-actions.pug'),
     controller: 'inboxJamesDlpRejectedActionsController',
     bindings: {
       bulkAction: '<',
