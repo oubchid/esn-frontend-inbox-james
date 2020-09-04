@@ -1,0 +1,39 @@
+.card(ng-if="!$ctrl.rule.deleted")
+  .card-header.flex-vertical-centered
+    .col-xs-6
+      h2(ng-show="$ctrl.rule.explanation") {{$ctrl.rule.explanation}}
+    .col-xs-6.flex-end
+      button.btn.btn-link.btn-default(ng-click="$ctrl.onDeleteBtnClick(form)", type="button", title="{{ 'Delete' | translate }}")
+        i.mdi.mdi-delete
+  .card-body.card-padding
+    ng-form(role="form", aria-hidden="true", name="form", esn-autocomplete-off)
+      .row
+        .col-xs-12.col-md-6
+          esn-form-group(label="{{ 'Expression' | translate }}")
+            input.form-control(type="text", ng-model="$ctrl.rule.expression", required, name="expression")
+        .col-xs-12.col-md-6
+          esn-form-group(label="{{ 'Description' | translate }}")
+            input.form-control(type="text", ng-model='$ctrl.rule.explanation', required, name="explanation")
+          div
+            p {{ 'Expression will be applied to:' | translate }}
+            label.checkbox.checkbox-inline
+              input(type="checkbox", ng-model="$ctrl.rule.targetsSender", name="targetsSender")
+              i.input-helper
+              | {{ 'Sender' | translate }}
+            label.checkbox.checkbox-inline
+              input(type="checkbox", ng-model="$ctrl.rule.targetsRecipients", name="targetsRecipients")
+              i.input-helper
+              | {{ 'Recipients' | translate }}
+            label.checkbox.checkbox-inline
+              input(type="checkbox", ng-model="$ctrl.rule.targetsContent", name="targetsContent")
+              i.input-helper
+              | {{ 'Content' | translate }}
+.card(ng-if="$ctrl.rule.deleted && $ctrl.rule.explanation")
+  .card-body.card-padding
+    .row
+      .col-xs-12
+        .p-t-5.flex-space-between
+          span
+            |  {{ 'You are about to remove the rule "%s"' | translate:$ctrl }}
+          a(href='', ng-click="$ctrl.onUndoBtnClick()")
+            |  {{ 'Undo' | translate }}

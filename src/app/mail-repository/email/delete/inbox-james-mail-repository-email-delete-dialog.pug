@@ -1,0 +1,22 @@
+.modal(tabindex='-1', role='dialog', ng-init='$ctrl.$onInit()')
+  .modal-dialog
+    .modal-content
+      .modal-header(ng-switch='$ctrl.target')
+        h4.modal-title(ng-switch-when='single')
+          | {{ 'Delete mail?' | translate }}
+        h4.modal-title(ng-switch-when='multiple')
+          | {{ 'Delete mails?' | translate }}
+        h4.modal-title(ng-switch-when='all')
+          | {{ 'Delete all mails?' | translate }}
+      .modal-body(ng-switch='$ctrl.target')
+        p(ng-switch-when='single')
+          | {{ 'If you choose to delete this mail, it will no longer be delivered and will be permanently deleted from James.' | translate }}
+        p(ng-switch-when='multiple')
+          | {{ 'If you choose to delete these mails, they will no longer be delivered and will be permanently deleted from James.' | translate }}
+        p(ng-switch-when='all')
+          | {{ 'If you choose to delete all mails in this repository, they will no longer be delivered and will be permanently deleted from James.' | translate }}
+      .modal-footer
+        button.btn.btn-link(ng-click="$hide()")
+          | {{ 'Cancel' | translate }}
+        button.btn.btn-danger(ng-click="$ctrl.onDeleteBtnClick(); $hide()")
+          | {{ 'Delete' | translate }}

@@ -1,0 +1,31 @@
+sub-header
+  inbox-james-dlp-settings-subheader(
+    form="form",
+    on-form-submit="$ctrl.onFormSubmit()"
+  )
+
+form(name="form")
+  div(ng-switch="$ctrl.status")
+    div(ng-switch-when="loaded")
+      div
+        .container-message(ng-if="!$ctrl.rules || !$ctrl.rules.length")
+          .message
+            .icon.mdi.mdi-check
+            div
+              | {{ 'No rules, click' | translate }}
+              span.mdi.mdi-plus
+              | {{ 'to add a new one!' | translate }}
+        inbox-james-dlp-settings-rule-form(
+          ng-repeat="rule in $ctrl.rules track by rule.id",
+          rule="rule"
+        )
+      fab(icon="plus", ng-click="$ctrl.addForm()")
+
+    div(ng-switch-when="loading")
+      .text-center(openpaas-logo-spinner, spinner-start-active='1', spinner-size='0.5')
+
+    div(ng-switch-when="error")
+      .container-message
+        .message
+          .icon.mdi.mdi-alert-circle
+          p {{ 'A problem occurred while getting rules, try refreshing this page!' | translate }}

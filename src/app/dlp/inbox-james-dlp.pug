@@ -1,0 +1,19 @@
+.listview(ng-if="$ctrl.displayIn === 'domain'")
+  .lv-body
+    .lv-item.clickable.menu-item.flex(esn-toggle, toggled="true")
+      i.mdi.mdi-format-list-checks
+      .menu-title {{ 'Quarantine' | translate }}
+      .flex-grow
+        .badge-container.flex-end
+          .caret-submenu
+            i.mdi.mdi-menu-down
+    ul
+      .lv-item.clickable.menu-sub-item(ui-sref="admin.domain.dlp.quarantine", ui-sref-active="selected")
+        i.mdi.mdi-email
+        .menu-title {{ 'Quarantined' | translate }}
+      .lv-item.clickable.menu-sub-item(ui-sref="admin.domain.dlp.rejected", ui-sref-active="selected")
+        i.mdi.mdi-close-circle
+        .menu-title {{ 'Rejected' | translate }}
+      .lv-item.clickable.menu-sub-item(ui-sref="admin.domain.dlp.settings", ui-sref-active="selected")
+        i.mdi.mdi-settings
+        .menu-title {{ 'Settings' | translate }}
