@@ -6,16 +6,24 @@ var expect = chai.expect;
 
 describe('The inboxJamesMailRepositoryEmailDeleteDialogController controller', function() {
   var $controller, $rootScope;
-  var inboxJamesMailRepository, asyncAction; //eslint-disable-line no-unused-vars
+  var inboxJamesMailRepository, asyncActionMock;
 
-  beforeEach(module('esn.inbox-james'));
+  beforeEach(function() {
+    asyncActionMock = () => {};
 
-  beforeEach(inject(function(_$controller_, _$rootScope_, _inboxJamesMailRepository_, _asyncAction_) {
-    $controller = _$controller_;
-    $rootScope = _$rootScope_;
-    inboxJamesMailRepository = _inboxJamesMailRepository_;
-    asyncAction = _asyncAction_;
-  }));
+    angular.mock.module('esn.inbox-james');
+    angular.mock.module(function($provide) {
+      $provide.factory('asyncAction', function() {
+        return asyncActionMock;
+      });
+    })
+
+    inject(function(_$controller_, _$rootScope_, _inboxJamesMailRepository_) {
+      $controller = _$controller_;
+      $rootScope = _$rootScope_;
+      inboxJamesMailRepository = _inboxJamesMailRepository_;
+    })
+  });
 
   function initController(context) {
     var $scope = $rootScope.$new();
@@ -72,7 +80,7 @@ describe('The inboxJamesMailRepositoryEmailDeleteDialogController controller', f
     var expectedMessages;
 
     beforeEach(function() {
-      asyncAction = function(messages, action) {
+      asyncActionMock = function(messages, action) {
         expect(messages).to.deep.equal(expectedMessages);
 
         return action();

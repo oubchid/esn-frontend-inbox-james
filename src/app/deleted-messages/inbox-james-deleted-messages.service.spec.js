@@ -4,7 +4,7 @@ describe('The inboxJamesDeletedMessagesService service', function() {
   var $httpBackend, inboxJamesDeletedMessagesService;
 
   beforeEach(function() {
-    module('esn.inbox-james');
+    angular.mock.module('esn.inbox-james');
 
     inject(function(
       _$httpBackend_,

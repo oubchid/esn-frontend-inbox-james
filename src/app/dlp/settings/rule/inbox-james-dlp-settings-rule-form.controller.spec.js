@@ -8,7 +8,7 @@ describe('The InboxJamesDlpSettingsRuleFormController', function() {
   var $rootScope, $controller;
 
   beforeEach(function() {
-    module('esn.inbox-james');
+    angular.mock.module('esn.inbox-james');
 
     inject(function(
       _$rootScope_,

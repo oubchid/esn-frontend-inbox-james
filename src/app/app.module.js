@@ -11,7 +11,6 @@ angular.module(MODULE_NAME, [
   'esn.session',
   'esn.configuration',
   'esn.async-action',
-  'esn.lodash-wrapper',
   'esn.user',
   'esn.session',
   'esn.infinite-list',
@@ -23,6 +22,8 @@ angular.module(MODULE_NAME, [
 ]);
 
 require('ui-select/dist/select.js');
+require('esn-frontend-common-libs/src/frontend/js/modules/infinite-list/infinite-list.module.js');
+require('esn-frontend-common-libs/src/frontend/js/modules/scroll.js');
 require('esn-frontend-inbox/src/esn.inbox.libs/app/app.module.js');
 require('esn-frontend-inbox/src/linagora.esn.james/app/app.module.js');
 

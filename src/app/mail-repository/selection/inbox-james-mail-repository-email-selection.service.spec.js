@@ -7,7 +7,7 @@ var expect = chai.expect;
 describe('The inboxJamesMailRepositoryEmailSelection service', function() {
   var inboxJamesMailRepositoryEmailSelection;
 
-  beforeEach(module('esn.inbox-james'));
+  beforeEach(angular.mock.module('esn.inbox-james'));
 
   beforeEach(inject(function(_inboxJamesMailRepositoryEmailSelection_) {
     inboxJamesMailRepositoryEmailSelection = _inboxJamesMailRepositoryEmailSelection_;

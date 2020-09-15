@@ -12,14 +12,14 @@ describe('The inboxJamesDlpQuarantineActionsController', function() {
   var DOMAIN_ID = '1';
 
   beforeEach(function() {
-    module('esn.inbox-james');
+    angular.mock.module('esn.inbox-james');
 
     jamesApiClientMock = {
       reprocessAllMailsFromMailRepository: function() {},
       reprocessMailFromMailRepository: function() {}
     };
 
-    module(function($provide) {
+    angular.mock.module(function($provide) {
       $provide.value('jamesApiClient', jamesApiClientMock);
     });
 

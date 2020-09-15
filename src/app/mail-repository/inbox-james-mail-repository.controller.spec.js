@@ -13,15 +13,12 @@ describe('The inboxJamesMailRepositoryController', function() {
     infiniteScrollHelperMock = sinon.stub().returns();
     $modalMock = sinon.spy();
 
+    angular.mock.module('esn.inbox-james');
     angular.mock.module(function($provide) {
       $provide.value('infiniteScrollHelper', infiniteScrollHelperMock);
       $provide.constant('ELEMENTS_PER_REQUEST', ELEMENTS_PER_REQUEST_MOCK);
       $provide.constant('$modal', $modalMock);
     });
-  });
-
-  beforeEach(function() {
-    module('esn.inbox-james');
 
     inject(function(_$rootScope_, _$controller_) {
       $rootScope = _$rootScope_;

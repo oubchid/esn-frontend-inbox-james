@@ -6,7 +6,7 @@
 var expect = chai.expect;
 
 describe('The inboxJamesMailRepository service', function() {
-  var $rootScope, $q;
+  var $rootScope;
   var inboxJamesMailRepository, InboxJamesMailRepositoryEmail;
   var jamesApiClientMock, sessionMock;
   var userAPI, userUtils;
@@ -14,7 +14,7 @@ describe('The inboxJamesMailRepository service', function() {
   var DOMAIN_ID = '1';
 
   beforeEach(function() {
-    module('esn.inbox-james');
+    angular.mock.module('esn.inbox-james');
 
     jamesApiClientMock = {
       listMailsFromMailRepository: function() {},
@@ -26,17 +26,16 @@ describe('The inboxJamesMailRepository service', function() {
 
     sessionMock = {
       domain: { _id: DOMAIN_ID },
-      ready: { then: function() {} }
+      ready: { then: () => $q.when() }
     };
 
-    module(function($provide) {
+    angular.mock.module(function($provide) {
       $provide.value('jamesApiClient', jamesApiClientMock);
       $provide.value('session', sessionMock);
     });
 
     inject(function(
       _$rootScope_,
-      _$q_,
       _inboxJamesMailRepository_,
       _InboxJamesMailRepositoryEmail_,
       _userAPI_,
@@ -45,7 +44,6 @@ describe('The inboxJamesMailRepository service', function() {
       _INBOX_JAMES_MAIL_REPOSITORY_EVENTS_
     ) {
       $rootScope = _$rootScope_;
-      $q = _$q_;
       inboxJamesMailRepository = _inboxJamesMailRepository_;
       InboxJamesMailRepositoryEmail = _InboxJamesMailRepositoryEmail_;
       userAPI = _userAPI_;

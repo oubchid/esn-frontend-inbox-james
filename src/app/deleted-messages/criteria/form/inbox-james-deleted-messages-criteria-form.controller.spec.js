@@ -22,7 +22,7 @@ describe('The InboxJamesDeletedMessagesCriteriaForm controller', function() {
   }
 
   beforeEach(function() {
-    module('esn.inbox-james', function($provide) {
+    angular.mock.module('esn.inbox-james', function($provide) {
       $provide.value('$element', {
         find: angular.noop
       });
