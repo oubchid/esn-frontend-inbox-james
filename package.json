@@ -3,7 +3,8 @@
   "version": "0.0.1",
   "description": "Intermediary frontend module for Inbox and James",
   "scripts": {
-    "test": "./node_modules/karma/bin/karma start test/config/karma.conf.js"
+    "test": "./node_modules/karma/bin/karma start test/config/karma.conf.js",
+    "lint": "eslint src test webpack.*.js"
   },
   "devDependencies": {
     "@linagora/eslint-config-linagora-esn": "2.0.0",
