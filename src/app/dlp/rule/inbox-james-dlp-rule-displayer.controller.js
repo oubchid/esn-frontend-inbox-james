@@ -28,8 +28,7 @@ function inboxJamesDlpRuleDisplayerController(
       self.email.attributes.DlpMatchedRule
     ).then(function(rule) {
       self.rule = _processRule(rule);
-    })
-    .catch(function() {
+    }).catch(function() {
       self.ruleNotFound = true;
     });
   }

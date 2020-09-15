@@ -1,12 +1,9 @@
 'use strict';
 
-const _ = require('lodash');
-
 angular.module('esn.inbox-james')
   .controller('inboxJamesMailRepositoryEmailDeleteDialogController', inboxJamesMailRepositoryEmailDeleteDialogController);
 
 function inboxJamesMailRepositoryEmailDeleteDialogController(
-  $q,
   context,
   asyncAction,
   esnI18nService,

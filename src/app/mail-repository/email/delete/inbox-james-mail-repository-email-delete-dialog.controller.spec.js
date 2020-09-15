@@ -19,13 +19,13 @@ describe('The inboxJamesMailRepositoryEmailDeleteDialogController controller', f
       $provide.value('esnI18nService', {
         translate: text => text
       });
-    })
+    });
 
     inject(function(_$controller_, _$rootScope_, _inboxJamesMailRepository_) {
       $controller = _$controller_;
       $rootScope = _$rootScope_;
       inboxJamesMailRepository = _inboxJamesMailRepository_;
-    })
+    });
   });
 
   function initController(context) {
