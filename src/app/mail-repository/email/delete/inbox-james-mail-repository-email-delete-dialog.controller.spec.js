@@ -16,6 +16,9 @@ describe('The inboxJamesMailRepositoryEmailDeleteDialogController controller', f
       $provide.factory('asyncAction', function() {
         return asyncActionMock;
       });
+      $provide.value('esnI18nService', {
+        translate: text => text
+      });
     })
 
     inject(function(_$controller_, _$rootScope_, _inboxJamesMailRepository_) {
