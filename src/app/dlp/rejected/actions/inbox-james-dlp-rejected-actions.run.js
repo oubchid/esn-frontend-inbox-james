@@ -14,7 +14,7 @@ function injectRejectedActionsDirective(
       attributes: [
         { name: 'ng-if', value: '$ctrl.repository==="' + mailRepository + '"' },
         { name: 'ng-show', value: '$ctrl.getNumberOfSelectedEmails() || $ctrl.bulkAction' },
-        { name: 'repository', value: '$ctrl.repository'},
+        { name: 'repository', value: '$ctrl.repository' },
         { name: 'bulk-action', value: '$ctrl.bulkAction' }
       ]
     });

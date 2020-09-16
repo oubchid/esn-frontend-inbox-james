@@ -11,7 +11,7 @@ describe('The inboxJamesDlpSettingsController', function() {
   var DOMAIN_ID = '1';
 
   beforeEach(function() {
-    module('esn.inbox-james');
+    angular.mock.module('esn.inbox-james');
 
     uuid4Mock = {
       _uuid: '123',
@@ -25,7 +25,7 @@ describe('The inboxJamesDlpSettingsController', function() {
       storeDlpRules: function() {}
     };
 
-    module(function($provide) {
+    angular.mock.module(function($provide) {
       $provide.value('uuid4', uuid4Mock);
       $provide.value('jamesApiClient', jamesApiClientMock);
     });

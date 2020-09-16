@@ -11,7 +11,6 @@ angular.module(MODULE_NAME, [
   'esn.session',
   'esn.configuration',
   'esn.async-action',
-  'esn.lodash-wrapper',
   'esn.user',
   'esn.session',
   'esn.infinite-list',
@@ -23,6 +22,8 @@ angular.module(MODULE_NAME, [
 ]);
 
 require('ui-select/dist/select.js');
+require('esn-frontend-common-libs/src/frontend/js/modules/infinite-list/infinite-list.module.js');
+require('esn-frontend-common-libs/src/frontend/js/modules/scroll.js');
 require('esn-frontend-inbox/src/esn.inbox.libs/app/app.module.js');
 require('esn-frontend-inbox/src/linagora.esn.james/app/app.module.js');
 
@@ -53,24 +54,6 @@ require('./dlp/settings/inbox-james-dlp-settings.component.js');
 require('./dlp/settings/subheader/inbox-james-dlp-settings-subheader.component.js');
 require('./dlp/settings/rule/inbox-james-dlp-settings-rule-form.controller.js');
 require('./dlp/settings/rule/inbox-james-dlp-settings-rule-form.component.js');
-require('./deleted-messages/inbox-james-deleted-messages.constants.js');
-require('./deleted-messages/inbox-james-deleted-messages.service.js');
-require('./deleted-messages/criteria/inbox-james-deleted-message-criteria.service.js');
-require('./deleted-messages/criteria/attachment/inbox-james-deleted-messages-criteria-attachment-form.component.js');
-require('./deleted-messages/criteria/date/inbox-james-deleted-messages-criteria-date-form.controller.js');
-require('./deleted-messages/criteria/date/inbox-james-deleted-messages-criteria-date-form.component.js');
-require('./deleted-messages/criteria/form/inbox-james-deleted-messages-criteria-form.controller.js');
-require('./deleted-messages/criteria/form/inbox-james-deleted-messages-criteria-form.component.js');
-require('./deleted-messages/criteria/item/inbox-james-deleted-messages-criteria-item.controller.js');
-require('./deleted-messages/criteria/item/inbox-james-deleted-messages-criteria-item.component.js');
-require('./deleted-messages/criteria/participant/inbox-james-deleted-messages-criteria-participant-form.controller.js');
-require('./deleted-messages/criteria/participant/inbox-james-deleted-messages-criteria-participant-form.component.js');
-require('./deleted-messages/criteria/subject/inbox-james-deleted-messages-criteria-subject-form.component.js');
-require('./deleted-messages/restore-button/inbox-james-deleted-messages-restore-button.component.js');
-require('./deleted-messages/restore-button/inbox-james-deleted-messages-restore-button.run.js');
-require('./deleted-messages/restore-request/inbox-james-deleted-messages-restore-request.controller.js');
-require('./deleted-messages/restore-request/inbox-james-deleted-messages-restore-request.component.js');
-require('./deleted-messages/restore-request/inbox-james-deleted-messages-restore-request-subheader.component.js');
 require('./mail-repository/inbox-james-mail-repository.constants.js');
 require('./mail-repository/inbox-james-mail-repository.service.js');
 require('./mail-repository/inbox-james-mail-repository.controller.js');

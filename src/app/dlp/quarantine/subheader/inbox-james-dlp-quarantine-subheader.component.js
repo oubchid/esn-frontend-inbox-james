@@ -2,6 +2,6 @@
 
 angular.module('esn.inbox-james')
 
-.component('inboxJamesDlpQuarantineSubheader', {
-  template: require('./inbox-james-dlp-quarantine-subheader.pug')
-});
+  .component('inboxJamesDlpQuarantineSubheader', {
+    template: require('./inbox-james-dlp-quarantine-subheader.pug')
+  });

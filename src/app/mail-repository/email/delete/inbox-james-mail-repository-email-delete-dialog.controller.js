@@ -1,12 +1,9 @@
 'use strict';
 
-const _ = require('lodash');
-
 angular.module('esn.inbox-james')
   .controller('inboxJamesMailRepositoryEmailDeleteDialogController', inboxJamesMailRepositoryEmailDeleteDialogController);
 
 function inboxJamesMailRepositoryEmailDeleteDialogController(
-  $q,
   context,
   asyncAction,
   esnI18nService,
@@ -61,8 +58,8 @@ function inboxJamesMailRepositoryEmailDeleteDialogController(
 
     if (self.target === INBOX_JAMES_MAIL_REPOSITORY_MAIL_DELETION_TARGET.MULTIPLE) {
       return {
-        progressing: esnI18nService.translate('Deleting %s mails...', context.data.length),
-        success: esnI18nService.translate('%s mails deleted', context.data.length),
+        progressing: esnI18nService.translate('Deleting %s mails...', { numOfMails: context.data.length }).toString(),
+        success: esnI18nService.translate('%s mails deleted', { numOfMails: context.data.length }).toString(),
         failure: 'Failed to delete mails'
       };
     }

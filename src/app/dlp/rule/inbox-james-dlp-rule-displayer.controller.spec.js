@@ -12,11 +12,11 @@ describe('The inboxJamesDlpRuleDisplayerController', function() {
   var DOMAIN_ID = '1';
 
   beforeEach(function() {
-    module('esn.inbox-james');
+    angular.mock.module('esn.inbox-james');
 
     jamesApiClientMock = { getDlpRule: function() {} };
 
-    module(function($provide) {
+    angular.mock.module(function($provide) {
       $provide.value('jamesApiClient', jamesApiClientMock);
     });
 

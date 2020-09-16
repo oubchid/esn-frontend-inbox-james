@@ -1,7 +1,5 @@
 'use strict';
 
-const _ = require('lodash');
-
 angular.module('esn.inbox-james')
   .controller('inboxJamesMailRepositoryController', inboxJamesMailRepositoryController);
 
