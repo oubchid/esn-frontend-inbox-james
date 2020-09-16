@@ -47,8 +47,7 @@ require('./dlp/rejected/actions/inbox-james-dlp-rejected-actions.controller.js')
 require('./dlp/rejected/actions/inbox-james-dlp-rejected-actions.component.js');
 require('./dlp/rejected/actions/inbox-james-dlp-rejected-actions.run.js');
 require('./dlp/rule/inbox-james-dlp-rule-displayer.controller.js');
-require('./dlp/rule/inbox-james-dlp-rule-displayer.controller.js');
-require('./dlp/rule/inbox-james-dlp-rule-displayer.run.js');
+require('./dlp/rule/inbox-james-dlp-rule-displayer.component.js');
 require('./dlp/settings/inbox-james-dlp-settings.controller.js');
 require('./dlp/settings/inbox-james-dlp-settings.component.js');
 require('./dlp/settings/subheader/inbox-james-dlp-settings-subheader.component.js');

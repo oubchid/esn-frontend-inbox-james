@@ -13,7 +13,8 @@
             inbox-emailer-display(email='::$ctrl.email')
         .all-centered
           .flex-vertical-centered(dynamic-directive="email-extra-actions")
-        .extra-info(dynamic-directive='mail-repository-mail-extra-info')
+        .extra-info
+          inbox-james-dlp-rule-displayer(email='::$ctrl.email')
         .email-body
           inbox-message-body(message='::$ctrl.email')
       .modal-footer
