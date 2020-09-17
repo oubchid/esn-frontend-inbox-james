@@ -9,6 +9,7 @@ function inboxJamesMailRepository(
   $q,
   $modal,
   $rootScope,
+  FileSaver,
   InboxJamesMailRepositoryEmail,
   jamesApiClient,
   session,
@@ -17,7 +18,7 @@ function inboxJamesMailRepository(
   INBOX_JAMES_MAIL_REPOSITORY_EMAIL_FIELDS,
   INBOX_JAMES_MAIL_REPOSITORY_EVENTS
 ) {
-  var DOMAIN_ID = session.domain._id;
+  const DOMAIN_ID = session.domain._id;
 
   return {
     deleteAllMails: deleteAllMails,
@@ -28,7 +29,16 @@ function inboxJamesMailRepository(
   };
 
   function downloadEmlFile(mailRepository, emailKey) {
-    jamesApiClient.downloadEmlFileFromMailRepository(DOMAIN_ID, mailRepository, emailKey);
+    return jamesApiClient.downloadEmlFileFromMailRepository(DOMAIN_ID, mailRepository, emailKey)
+      .then(data => {
+        try {
+          const emlData = new Blob([data], { type: 'text/html' });
+
+          FileSaver.saveAs(emlData, [emailKey, 'eml'].join('.'));
+        } catch (err) {
+          return $q.reject(err);
+        }
+      });
   }
 
   function deleteMails(emails) {
