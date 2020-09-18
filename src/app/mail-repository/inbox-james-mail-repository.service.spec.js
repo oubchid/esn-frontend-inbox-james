@@ -3,18 +3,25 @@
 /* global chai: false */
 /* global sinon: false */
 
-var expect = chai.expect;
+const { expect } = chai;
 
 describe('The inboxJamesMailRepository service', function() {
-  var $rootScope;
-  var inboxJamesMailRepository, InboxJamesMailRepositoryEmail;
-  var jamesApiClientMock, sessionMock;
-  var userAPI, userUtils;
-  var INBOX_JAMES_MAIL_REPOSITORY_EMAIL_FIELDS, INBOX_JAMES_MAIL_REPOSITORY_EVENTS;
-  var DOMAIN_ID = '1';
+  let $rootScope;
+  let inboxJamesMailRepository, InboxJamesMailRepositoryEmail;
+  let FileSaverMock, jamesApiClientMock, sessionMock;
+  let userAPI, userUtils;
+  let INBOX_JAMES_MAIL_REPOSITORY_EMAIL_FIELDS, INBOX_JAMES_MAIL_REPOSITORY_EVENTS;
+  let sandbox;
+  const DOMAIN_ID = '1';
 
   beforeEach(function() {
+    sandbox = sinon.sandbox.create();
+
     angular.mock.module('esn.inbox-james');
+
+    FileSaverMock = {
+      saveAs: sinon.stub()
+    };
 
     jamesApiClientMock = {
       listMailsFromMailRepository: function() {},
@@ -30,7 +37,8 @@ describe('The inboxJamesMailRepository service', function() {
     };
 
     angular.mock.module(function($provide) {
-      $provide.value('jamesApiClient', jamesApiClientMock);
+      $provide.factory('jamesApiClient', function() { return jamesApiClientMock; });
+      $provide.value('FileSaver', FileSaverMock);
       $provide.value('session', sessionMock);
     });
 
@@ -60,6 +68,10 @@ describe('The inboxJamesMailRepository service', function() {
         return 'User 1';
       };
     });
+  });
+
+  afterEach(function() {
+    sandbox.restore();
   });
 
   describe('The list function', function() {
@@ -99,16 +111,72 @@ describe('The inboxJamesMailRepository service', function() {
   });
 
   describe('The downloadEmlFile function', function() {
-    it('should call downloadEmlFileFromMailRepository with email repository', function() {
-      var repository = 'a';
-      var mailKey = 'b';
+    it('should call downloadEmlFileFromMailRepository with email repository and save the eml file', function(done) {
+      const repository = 'a';
+      const mailKey = 'b';
+      const emlContent = '<h1>Some data</h1>';
+      const emlData = { foo: emlContent };
+      const BlobMock = sandbox.stub(global, 'Blob').returns(emlData);
 
-      jamesApiClientMock.downloadEmlFileFromMailRepository = sinon.spy();
+      jamesApiClientMock.downloadEmlFileFromMailRepository = sandbox.stub().returns($q.when(emlContent));
 
-      inboxJamesMailRepository.downloadEmlFile(repository, mailKey);
+      inboxJamesMailRepository.downloadEmlFile(repository, mailKey)
+        .then(() => {
+          expect(jamesApiClientMock.downloadEmlFileFromMailRepository).to.have.been.calledOnce;
+          expect(jamesApiClientMock.downloadEmlFileFromMailRepository).to.have.been.calledWith(DOMAIN_ID, repository, mailKey);
+          expect(BlobMock).to.have.been.calledWith([emlContent], { type: 'text/html' });
+          expect(FileSaverMock.saveAs).to.have.been.calledWith(emlData, [mailKey, 'eml'].join('.'));
+          done();
+        })
+        .catch(err => done(err || new Error('should resolve')));
 
-      expect(jamesApiClientMock.downloadEmlFileFromMailRepository).to.have.been.calledOnce;
-      expect(jamesApiClientMock.downloadEmlFileFromMailRepository).to.have.been.calledWith(DOMAIN_ID, repository, mailKey);
+      $rootScope.$digest();
+    });
+
+    it('should not try to save the eml file when the eml data fails to be fetched', function(done) {
+      const repository = 'a';
+      const mailKey = 'b';
+      const BlobMock = sandbox.stub(global, 'Blob').returns({ foo: 'bar' });
+
+      jamesApiClientMock.downloadEmlFileFromMailRepository = sandbox.stub().returns($q.reject());
+
+      inboxJamesMailRepository.downloadEmlFile(repository, mailKey)
+        .then(() => done(new Error('should not resolve')))
+        .catch(() => {
+          expect(jamesApiClientMock.downloadEmlFileFromMailRepository).to.have.been.calledOnce;
+          expect(jamesApiClientMock.downloadEmlFileFromMailRepository).to.have.been.calledWith(DOMAIN_ID, repository, mailKey);
+          expect(BlobMock).to.have.not.been.called;
+          expect(FileSaverMock.saveAs).have.not.been.called;
+          done();
+        });
+
+      $rootScope.$digest();
+    });
+
+    it('should reject when there is an error while saving the eml file', function(done) {
+      const repository = 'a';
+      const mailKey = 'b';
+      const emlContent = '<h1>Some data</h1>';
+      const emlData = { foo: emlContent };
+      const BlobMock = sandbox.stub(global, 'Blob').returns(emlData);
+      const saveFileError = new Error('Could not save file');
+
+      FileSaverMock.saveAs = sandbox.stub().throws(saveFileError);
+
+      jamesApiClientMock.downloadEmlFileFromMailRepository = sandbox.stub().returns($q.resolve(emlContent));
+
+      inboxJamesMailRepository.downloadEmlFile(repository, mailKey)
+        .then(() => done(new Error('should not resolve')))
+        .catch(err => {
+          expect(jamesApiClientMock.downloadEmlFileFromMailRepository).to.have.been.calledOnce;
+          expect(jamesApiClientMock.downloadEmlFileFromMailRepository).to.have.been.calledWith(DOMAIN_ID, repository, mailKey);
+          expect(BlobMock).to.have.been.calledWith([emlContent], { type: 'text/html' });
+          expect(FileSaverMock.saveAs).to.have.been.calledWithExactly(emlData, [mailKey, 'eml'].join('.'));
+          expect(err).to.equal(saveFileError);
+          done();
+        });
+
+      $rootScope.$digest();
     });
   });
 
