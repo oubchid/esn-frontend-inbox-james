@@ -49,8 +49,8 @@
     "node": ">=10.12.0"
   },
   "dependencies": {
-    "esn-frontend-common-libs": "github:openpaas-suite/esn-frontend-common-libs#main",
-    "esn-frontend-inbox": "github:openpaas-suite/esn-frontend-inbox#main",
+    "esn-frontend-common-libs": "github:linagora/esn-frontend-common-libs#main",
+    "esn-frontend-inbox": "github:linagora/esn-frontend-inbox#main",
     "ui-select": "0.19.8"
   }
 }
