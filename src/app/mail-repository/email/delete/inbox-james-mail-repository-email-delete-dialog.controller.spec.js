@@ -6,7 +6,7 @@ var expect = chai.expect;
 
 describe('The inboxJamesMailRepositoryEmailDeleteDialogController controller', function() {
   var $controller, $rootScope;
-  var inboxJamesMailRepository, asyncActionMock;
+  var inboxJamesMailRepository, asyncActionMock, esnI18nService;
 
   beforeEach(function() {
     asyncActionMock = () => {};
@@ -16,9 +16,13 @@ describe('The inboxJamesMailRepositoryEmailDeleteDialogController controller', f
       $provide.factory('asyncAction', function() {
         return asyncActionMock;
       });
-      $provide.value('esnI18nService', {
+
+      esnI18nService = {
+        getLocale: sinon.stub().returns('en'),
         translate: text => text
-      });
+      };
+
+      $provide.value('esnI18nService', esnI18nService);
     });
 
     inject(function(_$controller_, _$rootScope_, _inboxJamesMailRepository_) {
